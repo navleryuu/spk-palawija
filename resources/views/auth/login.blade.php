@@ -52,11 +52,10 @@
                         <div class="relative">
                             <input type="password" name="password" id="password" placeholder="Masukkan Password"
                                 class="mt-1 block w-full text-lg border-gray-300 rounded-xl shadow-sm focus:border-green-600 focus:ring-green-500 px-4 py-3 pr-12">
-                            
+
                             {{-- Tombol Mata --}}
                             <button type="button" id="togglePassword" 
                                 class="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-green-600">
-                                {{-- SVG icon mata --}}
                                 <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" 
                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
                                     class="w-6 h-6">
@@ -69,8 +68,15 @@
                         </div>
                     </div>
 
+                    {{-- Tombol Lupa Password --}}
+                    <div class="text-right -mt-4">
+                        <a href="{{ route('forgot.password') }}" class="text-sm text-green-700 hover:underline">
+                            Lupa Password?
+                        </a>
+                    </div>
+
                     {{-- Tombol Submit --}}
-                    <div class="text-center pt-6">
+                    <div class="text-center pt-2">
                         <button type="submit"
                             class="bg-green-700 hover:bg-green-800 text-white text-lg font-semibold px-10 py-3 rounded-full shadow-md transition-all duration-200">
                             Masuk Sekarang
@@ -91,7 +97,6 @@
             const isHidden = password.getAttribute('type') === 'password';
             password.setAttribute('type', isHidden ? 'text' : 'password');
 
-            // Ganti ikon mata (open/close)
             eyeIcon.innerHTML = isHidden
                 ? `<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.95 12c1.563 3.942 5.294 6.75 10.05 6.75 1.872 0 3.63-.46 5.17-1.276M9.53 9.53A3 3 0 0114.47 14.47M9.53 9.53L3 3m6.53 6.53l4.94 4.94m0 0L21 21"/>`
                 : `<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.364 4.5 12 4.5c4.636 0 8.577 3.01 9.964 7.183.07.207.07.432 0 .639C20.577 16.49 16.636 19.5 12 19.5c-4.636 0-8.577-3.01-9.964-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`;

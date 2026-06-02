@@ -12,7 +12,7 @@
     <div class="min-h-screen flex flex-col justify-between">
 
         <!-- Header (Logo kiri atas) -->
-       <header class="flex items-center gap-3 px-10 lg:px-28 pt-8">
+        <header class="flex items-center gap-3 px-10 lg:px-28 pt-8">
             <img src="{{ asset('images/logo-dinas.png') }}" alt="Logo Dinas Pertanian" class="w-10 h-10">
             <h1 class="text-green-800 text-lg font-semibold leading-tight">
                 UPTD Benih Induk Palawija Tanjung Selamat
@@ -31,14 +31,16 @@
                 </p>
 
                 <div class="flex justify-center lg:justify-start gap-4">
-                    <a href="{{ route('login', ['role' => 'admin']) }}" 
-                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-6 py-2 rounded-full shadow">
-                    Login Admin
+                    <!-- ✅ FIXED: tambahkan query string ?role=admin -->
+                    <a href="{{ route('login') }}?role=admin"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-6 py-2 rounded-full shadow">
+                        Login Admin
                     </a>
 
-                    <a href="{{ route('login', ['role' => 'kepala_dinas']) }}" 
-                    class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-full shadow">
-                    Login Kepala Dinas
+                    <!-- ✅ FIXED: tambahkan query string ?role=kepala_dinas -->
+                    <a href="{{ route('login') }}?role=kepala_dinas"
+                        class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-full shadow">
+                        Login Kepala Dinas
                     </a>
                 </div>
             </div>
@@ -46,7 +48,6 @@
             <!-- Kanan: Gambar Ilustrasi -->
             <div class="mt-12 lg:mt-0">
                 <img src="{{ asset('images/logo-orang.png') }}" alt="Petani Ilustrasi" class="w-[700px] mx-auto drop-shadow-xl">
-
             </div>
         </main>
 

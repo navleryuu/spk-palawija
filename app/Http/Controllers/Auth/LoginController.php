@@ -28,10 +28,16 @@ class LoginController extends Controller
             $user = Auth::user();
 
             // Arahkan sesuai role
-            if ($request->role === 'admin' && $user->hasRole('admin')) {
-                return redirect()->route('admin.dashboard');
-            } elseif ($request->role === 'kepala_dinas' && $user->hasRole('kepala_dinas')) {
-                return redirect()->route('kepala.dashboard');
+            // if ($request->role === 'admin' && $user->hasRole('admin')) {
+            //     return redirect()->route('admin.dashboard');
+            // } elseif ($request->role === 'kepala_dinas' && $user->hasRole('kepala_dinas')) {
+            //     return redirect()->route('kepala.dashboard');
+            // }
+
+            if ($user->role === $request->role) {
+                return $user->role === 'admin'
+                    ? redirect()->route('admin.dashboard')
+                    : redirect()->route('kepala.dashboard');
             }
 
             // Kalau role tidak cocok

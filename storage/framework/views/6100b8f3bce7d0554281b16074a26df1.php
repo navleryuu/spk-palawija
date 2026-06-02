@@ -1,0 +1,88 @@
+
+
+<?php $__env->startSection('title', 'Hasil Perhitungan'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="p-6 bg-white rounded-2xl shadow">
+    
+    <div class="flex items-center mb-4 text-sm text-gray-600">
+        <i class="fas fa-chart-line text-green-600 mr-2"></i>
+        <span class="font-semibold text-green-700">Perhitungan</span>
+        <span class="mx-2">/</span>
+        <span class="text-gray-500">Hasil Gabungan</span>
+    </div>
+
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="text-2xl font-bold text-green-700">Hasil Gabungan (Metode MOORA & ORESTE)</h1>
+    </div>
+
+    
+    <div class="overflow-x-auto">
+        <table class="w-full border border-green-200 rounded-lg text-sm">
+            <thead class="bg-green-50 text-green-800">
+                <tr>
+                    <th class="p-3 border-b text-center">Peringkat</th>
+                    <th class="p-3 border-b text-left">Nama Alternatif</th>
+                    <th class="p-3 border-b text-center">Nilai MOORA</th>
+                    <th class="p-3 border-b text-center">Nilai ORESTE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $__empty_1 = true; $__currentLoopData = $hasil_gabungan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <tr class="hover:bg-green-50 transition">
+                        <td class="p-3 border-b text-center font-semibold text-gray-700">
+                            <?php echo e($index + 1); ?>
+
+                        </td>
+                        <td class="p-3 border-b text-gray-700">
+                            <?php echo e($item->alternatif); ?>
+
+                        </td>
+                        <td class="p-3 border-b text-center text-gray-700">
+                            <?php echo e(number_format($item->skor_moora, 4)); ?>
+
+                        </td>
+                        <td class="p-3 border-b text-center text-gray-700">
+                            <?php echo e(number_format($item->nilai_oreste, 4)); ?>
+
+                        </td>
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <tr>
+                        <td colspan="4" class="p-4 text-center text-gray-500">
+                            Belum ada data hasil perhitungan.
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('scripts'); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Logout?',
+                text: 'Apakah kamu yakin ingin keluar dari sistem?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#16a34a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '<i class="fas fa-power-off"></i> Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('logout-form').submit();
+                }
+            });
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('kepala.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\spk-palawija-271025\spk-palawija\resources\views/kepala/perhitungan/index.blade.php ENDPATH**/ ?>

@@ -18,7 +18,8 @@ class RoleSeeder extends Seeder
         // Buat User Admin
         $admin = User::create([
             'nip' => '1234567890',
-            'name' => 'Admin Sistem',
+            'name' => 'Admin',
+            'role' => 'admin',
             'password' => Hash::make('admin123'),
         ]);
         $admin->assignRole($adminRole);
@@ -27,6 +28,7 @@ class RoleSeeder extends Seeder
         $kepala = User::create([
             'nip' => '9876543210',
             'name' => 'Kepala Dinas',
+            'role' => 'kepala_dinas',
             'password' => Hash::make('kepala123'),
         ]);
         $kepala->assignRole($kepalaRole);
